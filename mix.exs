@@ -13,6 +13,7 @@ defmodule Class.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       preferred_cli_env: [ci: :test],
+      elixirc_paths: elixirc_paths(Mix.env()),
       elixirc_options: [warnings_as_errors: System.get_env("CI") == "true"],
       package: [
         licenses: ["MIT"],
@@ -45,6 +46,9 @@ defmodule Class.MixProject do
       extra_applications: [:logger]
     ]
   end
+
+  defp elixirc_paths(:test), do: ~w(lib test/support)
+  defp elixirc_paths(_), do: ~w(lib)
 
   defp dialyzer_flags do
     [

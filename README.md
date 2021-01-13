@@ -8,6 +8,20 @@
 
 <!-- MDOC -->
 
-ModuleDoc
+## Usage
+
+```elixir
+defmodule Person do
+  use Class
+
+  var :name, String.t(), enforce: true
+  var :age, non_neg_integer(), default: 0
+
+  @impl true
+  def initialize(%{name: "foo"} = args) do
+    %{args | name: "bar"}
+  end
+end
+```
 
 <!-- MDOC -->
