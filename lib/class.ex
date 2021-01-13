@@ -1,18 +1,5 @@
 defmodule Class do
-  @moduledoc """
-  Documentation for `Class`.
-  """
+  @external_resource readme = Path.join([__DIR__, "../README.md"])
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Class.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @moduledoc readme |> File.read!() |> String.split("<!-- MDOC -->") |> Enum.fetch!(1)
 end
